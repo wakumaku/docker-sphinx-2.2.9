@@ -8,7 +8,8 @@ RUN apt-get install -y \
     build-essential \
     unixodbc-dev \
     expat \
-    libmysqlclient-dev
+    libmysqlclient-dev \
+    cron
 
 COPY install/*.tar.gz /opt/install/
 
@@ -37,6 +38,7 @@ RUN chmod +x /opt/scripts/*.sh
 
 RUN apt-get remove -y \
     build-essential && \
+    apt-get autoremove && \
     rm -rf /opt/install
 
 

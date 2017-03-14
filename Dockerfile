@@ -37,7 +37,7 @@ RUN mkdir -p /var/idx/sphinx && \
 VOLUME ["/var/idx/sphinx", "/var/log/sphinx", "/var/lib/sphinx", "/var/run/sphinx"]
 
 # scripts
-COPY ./scripts /opt/
+COPY ./scripts /opt/scripts
 RUN chmod +x /opt/scripts/*.sh
 
 RUN apt-get remove -y \

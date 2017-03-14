@@ -1,0 +1,3 @@
+#!/bin/bash
+
+searchd --nodetach "$@"

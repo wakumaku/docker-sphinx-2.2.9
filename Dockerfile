@@ -37,16 +37,12 @@ RUN mkdir -p /var/idx/sphinx && \
 VOLUME ["/var/idx/sphinx", "/var/log/sphinx", "/var/lib/sphinx", "/var/run/sphinx"]
 
 # scripts
-ADD searchd.sh /
-RUN chmod a+x searchd.sh
-ADD indexall.sh /
-RUN chmod a+x indexall.sh
+COPY ./scripts /opt/
+RUN chmod +x /opt/scripts/*.sh
 
 RUN apt-get remove -y \
     build-essential && \
     rm -rf /opt/install
 
-
-
 # run the script
-CMD ["./indexall.sh"]
+CMD ["/opt/scripts/indexall.sh"]

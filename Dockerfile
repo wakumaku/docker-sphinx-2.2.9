@@ -8,8 +8,7 @@ RUN apt-get install -y \
     build-essential \
     unixodbc-dev \
     expat \
-    libmysqlclient-dev \
-    cron
+    libmysqlclient-dev
 
 COPY install/*.tar.gz /opt/install/
 
@@ -41,7 +40,6 @@ RUN apt-get remove -y \
     apt-get autoremove && \
     rm -rf /opt/install
 
+EXPOSE 9312 9306
 
 CMD ["/opt/scripts/indexall.sh"]
-
-EXPOSE 9312 9306

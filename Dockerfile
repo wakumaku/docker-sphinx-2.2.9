@@ -25,18 +25,13 @@ RUN cd sphinx-2.2.9-release && \
 
 WORKDIR /
 
-# expose ports
-EXPOSE 9312 9306
+RUN mkdir -p /var/idx/sphinxsearch && \
+    mkdir -p /var/log/sphinxsearch && \
+    mkdir -p /var/lib/sphinxsearch && \
+    mkdir -p /var/run/sphinxsearch
 
-# prepare directories
-RUN mkdir -p /var/idx/sphinx && \
-    mkdir -p /var/log/sphinx && \
-    mkdir -p /var/lib/sphinx && \
-    mkdir -p /var/run/sphinx
+VOLUME ["/var/idx/sphinxsearch", "/var/log/sphinxsearch", "/var/lib/sphinxsearch", "/var/run/sphinxsearch"]
 
-VOLUME ["/var/idx/sphinx", "/var/log/sphinx", "/var/lib/sphinx", "/var/run/sphinx"]
-
-# scripts
 COPY ./scripts /opt/scripts
 RUN chmod +x /opt/scripts/*.sh
 
@@ -44,5 +39,7 @@ RUN apt-get remove -y \
     build-essential && \
     rm -rf /opt/install
 
-# run the script
+
 CMD ["/opt/scripts/indexall.sh"]
+
+EXPOSE 9312 9306

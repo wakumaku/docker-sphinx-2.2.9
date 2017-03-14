@@ -37,7 +37,7 @@ RUN chmod +x /opt/scripts/*.sh
 
 RUN apt-get remove -y \
     build-essential && \
-    apt-get autoremove && \
+    apt-get autoremove -y && \
     rm -rf /opt/install
 
 EXPOSE 9312 9306

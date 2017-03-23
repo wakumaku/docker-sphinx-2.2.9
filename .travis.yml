@@ -4,6 +4,6 @@ services:
   - docker
 
 script:
-  - docker build --label=spinxv229_test -t wakumaku/spinxv229_test .
-  - docker images -f "label=spinxv229_test" | grep -q spinxv229_test
-  - docker run -d -p 9306:9306 -t spinxv229_test
+  - docker build --label=sphinxv229_test -t wakumaku/sphinxv229_test .
+  - docker images -f "label=sphinxv229_test" | grep -q sphinxv229_test
+  - docker run -d -p 9306:9306 -t wakumaku/sphinxv229_test

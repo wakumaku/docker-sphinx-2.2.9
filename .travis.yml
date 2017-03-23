@@ -6,4 +6,4 @@ services:
 script:
   - docker build --label=sphinxv229_test -t wakumaku/sphinxv229_test .
   - docker images -f "label=sphinxv229_test" | grep -q sphinxv229_test
-  - docker run -d -p 9306:9306 -t wakumaku/sphinxv229_test
+  - docker run -d -t wakumaku/sphinxv229_test
